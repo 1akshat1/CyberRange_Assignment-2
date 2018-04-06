@@ -4,7 +4,7 @@ const request = require('request');
 
 //Get Request
 
-api.get('/:zip/', function (req, res) {
+api.get('/locations/:zip/', function (req, res) {
   var zip_code = req.params.zip;
   var scale = req.query.scale;
   if((scale) == 'celsius')
