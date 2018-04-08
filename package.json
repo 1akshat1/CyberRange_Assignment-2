@@ -1,16 +1,18 @@
 {
   "name": "cyberrange_assignment2",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Weather Api for Virgina CyberRange",
+  "main": "server.js",
   "scripts": {
-    "test": "console.log(\"Test\")"
+    "test": "console.log(\"Test\")",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Akshat Malik",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "window-popup": "^1.1.0"
   }
 }
