@@ -24,7 +24,7 @@ api.get('/locations/:zip/', function (req, res) {
 
     //First request to get WOEID zip_code
 
-    var first = function(parameter){
+    var first_request = function(parameter){
       request(parameter, function (err, response, body) {
       if(err){
         console.log('error:',error);
@@ -32,14 +32,14 @@ api.get('/locations/:zip/', function (req, res) {
       } else {
         var woeid = JSON.parse(body);
         woeid_parsed = woeid.query.results.place[0].woeid;
-        second(woeid_parsed,scale);
+        second_request(woeid_parsed,scale);
       }
     });
     }
 
     //Second Request to get the temperature
 
-    var second = function(woeid_parsed,scale){
+    var second_request = function(woeid_parsed,scale){
       var searchtext = "select item.condition from weather.forecast where woeid =" + woeid_parsed + " and u='"+scale+"'";
       var url = "https://query.yahooapis.com/v1/public/yql?q=" + searchtext + "&format=json";
         request(url, function (err, response, body) {
@@ -58,8 +58,8 @@ api.get('/locations/:zip/', function (req, res) {
         }
       });
     }
-    var q = "https://query.yahooapis.com/v1/public/yql?q=SELECT woeid FROM geo.places WHERE text=" + zip_code + "&format=json";
-    first(q);
+    var query = "https://query.yahooapis.com/v1/public/yql?q=SELECT woeid FROM geo.places WHERE text=" + zip_code + "&format=json";
+    first_request(query);
   }
 
 })
